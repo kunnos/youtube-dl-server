@@ -21,6 +21,7 @@ app_defaults = {
     'YDL_ARCHIVE_FILE': None,
     'YDL_SERVER_HOST': '0.0.0.0',
     'YDL_SERVER_PORT': 8080,
+    'YDL_PROXY': None,
 }
 
 
@@ -91,13 +92,14 @@ def get_ydl_options(request_options):
         postprocessors.append({
             'key': 'FFmpegVideoConvertor',
             'preferedformat': ydl_vars['YDL_RECODE_VIDEO_FORMAT'],
-        })
+        })        
 
     return {
         'format': ydl_vars['YDL_FORMAT'],
         'postprocessors': postprocessors,
         'outtmpl': ydl_vars['YDL_OUTPUT_TEMPLATE'],
-        'download_archive': ydl_vars['YDL_ARCHIVE_FILE']
+        'download_archive': ydl_vars['YDL_ARCHIVE_FILE'],
+        'proxy': ydl_vars['YDL_PROXY']
     }
 
 
